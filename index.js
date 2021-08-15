@@ -29,7 +29,7 @@ app.post('/notify', async (req, res) => {
       await firestore
         .collection('users')
         .doc(req.body.id)
-        .set({ ...result, ...req.body });
+        .update({ ...result, ...req.body });
     }
 
     res.json({ message: 'success' });
