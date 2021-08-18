@@ -1,0 +1,9 @@
+version: '2'
+services:
+  app:
+    build: .
+    image: f365-casino-firebase
+    container_name: f365-casino-firebase-app
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
