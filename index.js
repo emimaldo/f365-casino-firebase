@@ -4,7 +4,7 @@ const firebase = require('firebase-admin');
 
 const app = express();
 
-const serviceAccount = require('./f365-casino-test-firebase.json');
+const serviceAccount = require('./f365-casino-firebase.json');
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount)
 });
@@ -20,7 +20,7 @@ app.post('/notify', async (req, res) => {
   try {
     console.log('req_body', JSON.stringify(req.body));
     const result = await (await firestore.collection('users').doc(req.body.id).get()).data;
-    if (!result) {
+    if (result) {
       await firestore
         .collection('users')
         .doc(req.body.id)
