@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post('/notify', async (req, res) => {
   try {
     console.log('req_body', JSON.stringify(req.body));
-    const result = await (await firestore.collection('users').doc(req.body.id).get()).data;
+    const result = await (await firestore.collection('users').doc(req.body.id).get()).data();
     if (result) {
       await firestore
         .collection('users')
