@@ -24,12 +24,12 @@ app.post('/notify', async (req, res) => {
       await firestore
         .collection('users')
         .doc(req.body.id)
-        .set({ ...req.body });
+        .update({ ...result, ...req.body });
     } else {
       await firestore
         .collection('users')
         .doc(req.body.id)
-        .update({ ...result, ...req.body });
+        .set({ ...req.body });
     }
 
     res.json({ message: 'success' });
